@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.0.0 - 2020-01-13
+* Update dependencies to be used with Laravel 6
+
 ## 3.2.1 - 2019-10-07
 * Bugfix, remove call to setDetaulTopicConf() in RdKafka\Conf, which was deprecated in rdkafka 4.0.0 (pecl)
 
