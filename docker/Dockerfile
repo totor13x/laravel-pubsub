@@ -31,6 +31,3 @@ RUN pecl install rdkafka \
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Install Composer Application Dependencies
-#RUN composer require superbalist/php-pubsub-kafka
