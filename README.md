@@ -6,8 +6,8 @@ _forked from Entanet/laravel-pubsub_
 
 [![Author](http://img.shields.io/badge/author-@superbalist-blue.svg?style=flat-square)](https://twitter.com/superbalist)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/leroymerlinbr/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroymerlinbr/laravel-pubsub)
-[![Total Downloads](https://img.shields.io/packagist/dt/leroymerlinbr/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroymerlinbr/laravel-pubsub)
+[![Packagist Version](https://img.shields.io/packagist/v/leroy-merlin-br/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroy-merlin-br/laravel-pubsub)
+[![Total Downloads](https://img.shields.io/packagist/dt/leroy-merlin-br/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroy-merlin-br/laravel-pubsub)
 
 This package is a wrapper bridging [php-pubsub](https://github.com/Superbalist/php-pubsub) into Laravel.
 
@@ -30,7 +30,7 @@ The following adapters are supported:
 ## Installation
 
 ```bash
-composer require leroymerlinbr/laravel-pubsub
+composer require leroy-merlin-br/laravel-pubsub
 ```
 
 Register the service provider in app.php
