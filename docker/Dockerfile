@@ -20,4 +20,13 @@ RUN pecl install rdkafka \
 RUN docker-php-ext-enable xdebug
 COPY custom.ini /usr/local/etc/php/conf.d/custom.ini
 
+ARG UID=1000
+ARG GID=1000
+
+RUN groupmod -g ${GID} www-data \
+  && usermod -u ${UID} -g www-data www-data \
+  && chown -hR www-data:www-data \
+    /var/www \
+    /usr/local/
+
 USER www-data:www-data
