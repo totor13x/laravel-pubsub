@@ -33,16 +33,4 @@ RUN pecl install rdkafka \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install Composer Application Dependencies
-COPY composer.json /opt/laravel-pubsub/
-RUN composer install --no-autoloader --no-scripts --no-interaction
-RUN composer require superbalist/php-pubsub-kafka
-
-COPY config /opt/laravel-pubsub/config
-COPY src /opt/laravel-pubsub/src
-COPY tests /opt/laravel-pubsub/tests
-COPY phpunit.php /opt/laravel-pubsub/
-COPY phpunit.xml /opt/laravel-pubsub/
-
-RUN composer dump-autoload --no-interaction
-
-CMD ["/bin/bash"]
+#RUN composer require superbalist/php-pubsub-kafka
