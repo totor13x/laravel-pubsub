@@ -1,8 +1,7 @@
-version: '2'
+version: '3'
+
 services:
-  laravel-pubsub:
-    build: .
+  php:
+    build: docker
     volumes:
-      - ./config:/opt/laravel-pubsub/config
-      - ./src:/opt/laravel-pubsub/src
-      - ./tests:/opt/laravel-pubsub/tests
+      - .:/var/www/html

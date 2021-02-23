@@ -2,8 +2,17 @@
 
 namespace Tests;
 
+use Mockery;
+
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
+    protected function tearDown(): void
+    {
+        $container = Mockery::getContainer();
+        $this->addToAssertionCount($container->mockery_getExpectationCount());
+        parent::tearDown();
+    }
+
     /**
      * @return array
      */

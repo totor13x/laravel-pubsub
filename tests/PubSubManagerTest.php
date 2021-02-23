@@ -288,7 +288,7 @@ class PubSubManagerTest extends TestCase
         $manager = new PubSubManager($app, $factory);
 
         $extensions = $manager->getExtensions();
-        $this->assertInternalType('array', $extensions);
+        $this->assertIsArray($extensions);
 
         $callable = function () {
             //

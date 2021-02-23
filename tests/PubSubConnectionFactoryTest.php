@@ -84,8 +84,9 @@ class PubSubConnectionFactoryTest extends TestCase
             ->with('localhost')
             ->once();
 
+        $conf = Mockery::mock(\RdKafka\Conf::class);
         $container->shouldReceive('makeWith')
-            ->with('pubsub.kafka.producer')
+            ->with('pubsub.kafka.producer', ['conf' => $conf])
             ->once()
             ->andReturn($producer);
 
@@ -97,7 +98,6 @@ class PubSubConnectionFactoryTest extends TestCase
             ->once()
             ->andReturn($topicConf);
 
-        $conf = Mockery::mock(\RdKafka\Conf::class);
         $conf->shouldReceive('set')
             ->withArgs([
                 'metadata.broker.list',
@@ -126,14 +126,14 @@ class PubSubConnectionFactoryTest extends TestCase
             ->with($topicConf)
             ->once();
 
-        $container->shouldReceive('make')
+        $container->shouldReceive('makeWith')
             ->with('pubsub.kafka.conf')
             ->once()
             ->andReturn($conf);
 
         $consumer = Mockery::mock(\RdKafka\KafkaConsumer::class);
 
-        $container->shouldReceive('make')
+        $container->shouldReceive('makeWith')
             ->withArgs([
                 'pubsub.kafka.consumer',
                 ['conf' => $conf],
