@@ -29,5 +29,12 @@ RUN pecl install rdkafka \
     && docker-php-ext-enable rdkafka \
     && rm -rf /tmp/*
 
+# Xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && rm -rf /tmp/*
+
+COPY custom.ini /usr/local/etc/php/conf.d/custom.ini
+
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
