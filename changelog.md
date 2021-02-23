@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.0
+* Update dependencies to be used with Laravel 8 and PHP 7.4
+
+## 5.0.0
+* Update dependencies to be used with Laravel 7
+
 ## 4.0.0 - 2020-01-13
 * Update dependencies to be used with Laravel 6
 

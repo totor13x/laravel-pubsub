@@ -5,11 +5,9 @@ _forked from Entanet/laravel-pubsub_
 
 
 [![Author](http://img.shields.io/badge/author-@superbalist-blue.svg?style=flat-square)](https://twitter.com/superbalist)
-[![Build Status](https://img.shields.io/travis/Entanet/laravel-pubsub/master.svg?style=flat-square)](https://travis-ci.org/Entanet/laravel-pubsub)
-[![StyleCI](https://styleci.io/repos/67405993/shield?branch=master)](https://styleci.io/repos/67405993)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/entanet/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/entanet/laravel-pubsub)
-[![Total Downloads](https://img.shields.io/packagist/dt/entanet/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/entanet/laravel-pubsub)
+[![Packagist Version](https://img.shields.io/packagist/v/leroymerlinbr/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroymerlinbr/laravel-pubsub)
+[![Total Downloads](https://img.shields.io/packagist/dt/leroymerlinbr/laravel-pubsub.svg?style=flat-square)](https://packagist.org/packages/leroymerlinbr/laravel-pubsub)
 
 This package is a wrapper bridging [php-pubsub](https://github.com/Superbalist/php-pubsub) into Laravel.
 
@@ -18,6 +16,8 @@ For **Laravel 4** support, use the package https://github.com/Superbalist/larave
 Please note that **Laravel 5.3** is only supported up until version 2.0.2.
 
 2.0.3+ supports **Laravel 5.4 and up** moving forward.
+
+6.0.0 supports **Laravel 8.x**.
 
 The following adapters are supported:
 * Local
@@ -30,7 +30,7 @@ The following adapters are supported:
 ## Installation
 
 ```bash
-composer require entanet/laravel-pubsub
+composer require leroymerlinbr/laravel-pubsub
 ```
 
 Register the service provider in app.php
