@@ -1,7 +1,7 @@
 # laravel-pubsub
 
 A Pub-Sub abstraction for Laravel.
-_forked from Superbalist/laravel-pubsub_
+_forked from Entanet/laravel-pubsub_
 
 
 [![Author](http://img.shields.io/badge/author-@superbalist-blue.svg?style=flat-square)](https://twitter.com/superbalist)
