@@ -12,7 +12,7 @@ use Psr\Cache\CacheItemPoolInterface;
 use LaravelPubSub\PubSubConnectionFactory;
 use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
-use Superbalist\PubSub\GoogleCloud\GoogleCloudPubSubAdapter;
+use LaravelPubSub\Adapters\GoogleCloudPubSubAdapter;
 use LaravelPubSub\Adapters\HTTPPubSubAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
