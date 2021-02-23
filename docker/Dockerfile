@@ -1,4 +1,4 @@
-FROM leroymerlinbr/php:7.4-fpm
+FROM leroymerlinbr/php:7.4
 USER root
 
 # Packages
