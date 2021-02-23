@@ -1,6 +1,6 @@
 <?php
 
-namespace Superbalist\LaravelPubSub;
+namespace LaravelPubSub;
 
 use Illuminate\Support\Facades\Facade;
 
