@@ -7,7 +7,7 @@ jobs:
             -   uses: actions/checkout@v2
 
             -   name: Build containers
-                run: docker-compose build
+                run: docker-compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g)
 
             -   name: Composer install
                 run: docker-compose run --rm -T php composer install --no-interaction --no-progress

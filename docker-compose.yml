@@ -4,4 +4,4 @@ services:
   php:
     build: docker
     volumes:
-      - .:/opt/laravel-pubsub/
+      - .:/var/www/html

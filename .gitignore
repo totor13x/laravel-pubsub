@@ -2,6 +2,5 @@
 composer.lock
 vendor
 bin
-coverage
-coverage.xml
+build
 .phpunit.result.cache

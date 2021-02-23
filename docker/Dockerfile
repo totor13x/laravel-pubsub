@@ -1,28 +1,15 @@
-FROM php:7.4-fpm
-MAINTAINER Superbalist <tech+docker@superbalist.com>
-
-RUN mkdir /opt/laravel-pubsub
-WORKDIR /opt/laravel-pubsub
+FROM leroymerlinbr/php:7.4-fpm
+USER root
 
 # Packages
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        git \
-        zip \
-        libzip-dev \
-        zlib1g-dev \
-        unzip \
-        python \
-        && ( \
-            cd /tmp \
-            && mkdir librdkafka \
-            && cd librdkafka \
-            && git clone https://github.com/edenhill/librdkafka.git . \
-            && ./configure \
-            && make \
-            && make install \
-        ) \
-    && rm -r /var/lib/apt/lists/*
+RUN cd /tmp \
+    && mkdir librdkafka \
+    && cd librdkafka \
+    && git clone https://github.com/edenhill/librdkafka.git . \
+    && ./configure \
+    && make \
+    && make install \
+    && rm -rf /tmp/*
 
 # PHP Extensions
 RUN pecl install rdkafka \
@@ -30,11 +17,7 @@ RUN pecl install rdkafka \
     && rm -rf /tmp/*
 
 # Xdebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug \
-    && rm -rf /tmp/*
-
+RUN docker-php-ext-enable xdebug
 COPY custom.ini /usr/local/etc/php/conf.d/custom.ini
 
-# Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+USER www-data:www-data
