@@ -37,7 +37,7 @@ Register the service provider in app.php
 ```php
 'providers' => [
     // ...
-    Superbalist\LaravelPubSub\PubSubServiceProvider::class,
+    LeroyMerlin\LaravelPubSub\PubSubServiceProvider::class,
 ]
 ```
 
@@ -45,7 +45,7 @@ Register the facade in app.php
 ```php
 'aliases' => [
     // ...
-    'PubSub' => Superbalist\LaravelPubSub\PubSubFacade::class,
+    'PubSub' => LeroyMerlin\LaravelPubSub\PubSubFacade::class,
 ]
 ```
 
@@ -73,7 +73,7 @@ If the KAFKA_SECURITY_PROTOCOL is set to either "SASL_SSL" or "SASL_PLAINTEXT", 
 
 To customize the configuration file, publish the package configuration using Artisan.
 ```bash
-php artisan vendor:publish --provider="Superbalist\LaravelPubSub\PubSubServiceProvider"
+php artisan vendor:publish --provider="LeroyMerlin\LaravelPubSub\PubSubServiceProvider"
 ```
 
 You can then edit the generated config at `app/config/pubsub.php`.
@@ -214,7 +214,7 @@ Here is an example of how you can do this:
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Superbalist\LaravelPubSub\PubSubConnectionFactory;
+use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
 use Superbalist\PubSub\PubSubAdapterInterface;
 
 class MyExampleKafkaSubscriber extends Command
