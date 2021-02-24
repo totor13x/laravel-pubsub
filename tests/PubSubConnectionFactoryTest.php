@@ -14,9 +14,9 @@ use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
-use Superbalist\PubSub\Redis\RedisPubSubAdapter;
 
 class PubSubConnectionFactoryTest extends TestCase
 {
@@ -63,7 +63,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('redis', $config);
-        $this->assertInstanceOf(RedisPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(RedisAdapter::class, $adapter);
     }
 
     public function testMakeKafkaAdapter()

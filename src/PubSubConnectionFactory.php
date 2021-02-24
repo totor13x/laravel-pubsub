@@ -9,9 +9,9 @@ use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
-use Superbalist\PubSub\Redis\RedisPubSubAdapter;
 
 class PubSubConnectionFactory
 {
@@ -57,11 +57,11 @@ class PubSubConnectionFactory
     }
 
     /**
-     * Factory a RedisPubSubAdapter.
+     * Factory a RedisAdapter.
      *
      * @param array $config
      *
-     * @return RedisPubSubAdapter
+     * @return RedisAdapter
      */
     protected function makeRedisAdapter(array $config)
     {
@@ -71,7 +71,7 @@ class PubSubConnectionFactory
 
         $client = $this->container->makeWith('pubsub.redis.redis_client', ['config' => $config]);
 
-        return new RedisPubSubAdapter($client);
+        return new RedisAdapter($client);
     }
 
     /**
