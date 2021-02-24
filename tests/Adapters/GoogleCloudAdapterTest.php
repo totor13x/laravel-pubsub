@@ -5,7 +5,7 @@ namespace Tests\Adapters;
 use Google\Cloud\PubSub\PubSubClient;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use LaravelPubSub\Adapters\GoogleCloudAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 
 class GoogleCloudAdapterTest extends TestCase
 {

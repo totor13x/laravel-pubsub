@@ -6,8 +6,8 @@ use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Foundation\Application;
 use InvalidArgumentException;
 use Mockery;
-use LaravelPubSub\PubSubConnectionFactory;
-use LaravelPubSub\PubSubManager;
+use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
+use LeroyMerlin\LaravelPubSub\PubSubManager;
 use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 

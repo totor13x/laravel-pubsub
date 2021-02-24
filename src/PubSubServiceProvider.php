@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelPubSub;
+namespace LeroyMerlin\LaravelPubSub;
 
 use Google\Cloud\PubSub\PubSubClient as GoogleCloudPubSubClient;
 use GuzzleHttp\Client;

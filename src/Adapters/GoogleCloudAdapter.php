@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelPubSub\Adapters;
+namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use Google\Cloud\PubSub\Message;
 use Google\Cloud\PubSub\PubSubClient;

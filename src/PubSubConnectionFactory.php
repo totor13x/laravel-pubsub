@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelPubSub;
+namespace LeroyMerlin\LaravelPubSub;
 
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
-use LaravelPubSub\Adapters\GoogleCloudAdapter;
-use LaravelPubSub\Adapters\HTTPAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 use Superbalist\PubSub\Redis\RedisPubSubAdapter;

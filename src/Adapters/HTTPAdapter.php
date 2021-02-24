@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelPubSub\Adapters;
+namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelPubSub;
+namespace LeroyMerlin\LaravelPubSub;
 
 use Illuminate\Support\Facades\Facade;
 

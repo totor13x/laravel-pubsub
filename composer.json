@@ -28,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "LaravelPubSub\\": "src/"
+      "LeroyMerlin\\LaravelPubSub\\": "src/"
     }
   },
   "autoload-dev": {

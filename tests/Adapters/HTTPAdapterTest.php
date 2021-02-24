@@ -5,7 +5,7 @@ namespace Tests\Adapters;
 use GuzzleHttp\Client;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use LaravelPubSub\Adapters\HTTPAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 
 class HTTPAdapterTest extends TestCase
