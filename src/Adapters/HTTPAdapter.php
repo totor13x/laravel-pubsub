@@ -27,7 +27,7 @@ class HTTPAdapter implements PubSubAdapterInterface
     /**
      * @var string
      */
-    protected $userAgent = 'superbalist/php-pubsub-http';
+    protected $userAgent = 'leroymerlin/php-pubsub-http';
 
     /**
      * @param Client $client
