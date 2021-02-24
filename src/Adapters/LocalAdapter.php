@@ -2,9 +2,9 @@
 
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
-class LocalAdapter implements PubSubAdapterInterface
+class LocalAdapter implements AdapterInterface
 {
     /**
      * @var array

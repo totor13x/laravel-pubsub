@@ -2,10 +2,10 @@
 
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Superbalist\PubSub\Utils;
 
-class KafkaAdapter implements PubSubAdapterInterface
+class KafkaAdapter implements AdapterInterface
 {
     /**
      * @var \RdKafka\Producer

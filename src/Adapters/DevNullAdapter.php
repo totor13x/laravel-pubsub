@@ -2,9 +2,9 @@
 
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
-class DevNullAdapter implements PubSubAdapterInterface
+class DevNullAdapter implements AdapterInterface
 {
     /**
      * Subscribe a handler to a channel.

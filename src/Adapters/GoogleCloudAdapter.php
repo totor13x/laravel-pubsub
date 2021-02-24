@@ -4,10 +4,10 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use Google\Cloud\PubSub\Message;
 use Google\Cloud\PubSub\PubSubClient;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Superbalist\PubSub\Utils;
 
-class GoogleCloudAdapter implements PubSubAdapterInterface
+class GoogleCloudAdapter implements AdapterInterface
 {
     /**
      * @var PubSubClient

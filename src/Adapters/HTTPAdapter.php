@@ -4,10 +4,10 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Psr\Http\Message\RequestInterface;
-use Superbalist\PubSub\PubSubAdapterInterface;
 
-class HTTPAdapter implements PubSubAdapterInterface
+class HTTPAdapter implements AdapterInterface
 {
     /**
      * @var Client
@@ -20,7 +20,7 @@ class HTTPAdapter implements PubSubAdapterInterface
     protected $uri;
 
     /**
-     * @var PubSubAdapterInterface
+     * @var AdapterInterface
      */
     protected $adapter;
 
@@ -32,9 +32,9 @@ class HTTPAdapter implements PubSubAdapterInterface
     /**
      * @param Client $client
      * @param string $uri
-     * @param PubSubAdapterInterface $adapter
+     * @param AdapterInterface $adapter
      */
-    public function __construct(Client $client, $uri, PubSubAdapterInterface $adapter)
+    public function __construct(Client $client, $uri, AdapterInterface $adapter)
     {
         $this->client = $client;
         $this->uri = $uri;
@@ -72,7 +72,7 @@ class HTTPAdapter implements PubSubAdapterInterface
     /**
      * Return the adapter through which subscribes will be proxied to.
      *
-     * @return PubSubAdapterInterface
+     * @return AdapterInterface
      */
     public function getAdapter()
     {

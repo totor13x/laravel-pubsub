@@ -3,7 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Console\Command;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
 class DummyClass extends Command
 {
@@ -22,16 +22,16 @@ class DummyClass extends Command
     protected $description = 'PubSub subscriber for ________';
 
     /**
-     * @var PubSubAdapterInterface
+     * @var AdapterInterface
      */
     protected $pubsub;
 
     /**
      * Create a new command instance.
      *
-     * @param PubSubAdapterInterface $pubsub
+     * @param AdapterInterface $pubsub
      */
-    public function __construct(PubSubAdapterInterface $pubsub)
+    public function __construct(AdapterInterface $pubsub)
     {
         parent::__construct();
 
