@@ -41,7 +41,7 @@ class HTTPAdapterTest extends TestCase
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
         $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
-        $this->assertEquals('superbalist/php-pubsub-http', $adapter->getUserAgent());
+        $this->assertEquals('leroymerlin/php-pubsub-http', $adapter->getUserAgent());
         $adapter->setUserAgent('meh');
         $this->assertEquals('meh', $adapter->getUserAgent());
     }
