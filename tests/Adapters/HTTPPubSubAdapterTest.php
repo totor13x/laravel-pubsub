@@ -3,7 +3,6 @@
 namespace Tests\Adapters;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use LaravelPubSub\Adapters\HTTPPubSubAdapter;

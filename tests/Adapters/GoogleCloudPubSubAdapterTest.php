@@ -2,11 +2,7 @@
 
 namespace Tests\Adapters;
 
-use Google\Cloud\PubSub\BatchPublisher;
-use Google\Cloud\PubSub\Message;
 use Google\Cloud\PubSub\PubSubClient;
-use Google\Cloud\PubSub\Subscription;
-use Google\Cloud\PubSub\Topic;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use LaravelPubSub\Adapters\GoogleCloudPubSubAdapter;
