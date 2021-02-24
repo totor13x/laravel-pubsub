@@ -6,12 +6,12 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\KafkaAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\LocalAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
-use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
 class PubSubConnectionFactory
 {
@@ -29,12 +29,12 @@ class PubSubConnectionFactory
     }
 
     /**
-     * Factory a PubSubAdapterInterface.
+     * Factory a AdapterInterface.
      *
      * @param string $driver
      * @param array $config
      *
-     * @return PubSubAdapterInterface
+     * @return AdapterInterface
      */
     public function make($driver, array $config = [])
     {
@@ -75,11 +75,11 @@ class PubSubConnectionFactory
     }
 
     /**
-     * Factory a KafkaPubSubAdapter.
+     * Factory a KafkaAdapter.
      *
      * @param array $config
      *
-     * @return KafkaPubSubAdapter
+     * @return KafkaAdapter
      */
     protected function makeKafkaAdapter(array $config)
     {
@@ -118,11 +118,11 @@ class PubSubConnectionFactory
         // create consumer
         $consumer = $this->container->makeWith('pubsub.kafka.consumer', ['conf' => $conf]);
 
-        return new KafkaPubSubAdapter($producer, $consumer);
+        return new KafkaAdapter($producer, $consumer);
     }
 
     /**
-     * Factory a GoogleCloudPubSubAdapter.
+     * Factory a GoogleCloudAdapter.
      *
      * @param array $config
      *
@@ -134,6 +134,7 @@ class PubSubConnectionFactory
             'projectId' => $config['project_id'],
             'keyFilePath' => $config['key_file'],
         ];
+
         if (isset($config['auth_cache'])) {
             $clientConfig['authCache'] = $this->container->make($config['auth_cache']);
         }
@@ -149,6 +150,7 @@ class PubSubConnectionFactory
         if ($backgroundDaemon) {
             putenv('IS_BATCH_DAEMON_RUNNING=true');
         }
+
         return new GoogleCloudAdapter(
             $client,
             $clientIdentifier,
@@ -159,7 +161,7 @@ class PubSubConnectionFactory
     }
 
     /**
-     * Factory a HTTPPubSubAdapter.
+     * Factory a HTTPAdapter.
      *
      * @param array $config
      *

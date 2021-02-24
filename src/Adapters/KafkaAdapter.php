@@ -3,7 +3,7 @@
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
-use Superbalist\PubSub\Utils;
+use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
 class KafkaAdapter implements AdapterInterface
 {
@@ -70,7 +70,7 @@ class KafkaAdapter implements AdapterInterface
 
             switch ($message->err) {
                 case RD_KAFKA_RESP_ERR_NO_ERROR:
-                    $payload = Utils::unserializeMessagePayload($message->payload);
+                    $payload = Serialization::unserializeMessagePayload($message->payload);
 
                     if ($payload === 'unsubscribe') {
                         $isSubscriptionLoopActive = false;
@@ -99,7 +99,7 @@ class KafkaAdapter implements AdapterInterface
     public function publish($channel, $message)
     {
         $topic = $this->producer->newTopic($channel);
-        $topic->produce(RD_KAFKA_PARTITION_UA, 0, Utils::serializeMessage($message));
+        $topic->produce(RD_KAFKA_PARTITION_UA, 0, Serialization::serializeMessage($message));
     }
 
     /**

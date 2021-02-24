@@ -3,14 +3,14 @@
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use Predis\Client;
-use Superbalist\PubSub\PubSubAdapterInterface;
-use Superbalist\PubSub\Utils;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
+use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
 /**
  * Redis adapter
  * @source https://github.com/Superbalist/php-pubsub-redis Superbalist PHP Redis PubSub Adapter
  */
-class RedisAdapter implements PubSubAdapterInterface
+class RedisAdapter implements AdapterInterface
 {
     /**
      * @var Client
@@ -50,7 +50,7 @@ class RedisAdapter implements PubSubAdapterInterface
         foreach ($loop as $message) {
             /** @var \stdClass $message */
             if ($message->kind === 'message') {
-                call_user_func($handler, Utils::unserializeMessagePayload($message->payload));
+                call_user_func($handler, Serialization::unserializeMessagePayload($message->payload));
             }
         }
 
@@ -65,7 +65,7 @@ class RedisAdapter implements PubSubAdapterInterface
      */
     public function publish($channel, $message)
     {
-        $this->client->publish($channel, Utils::serializeMessage($message));
+        $this->client->publish($channel, Serialization::serializeMessage($message));
     }
 
     /**

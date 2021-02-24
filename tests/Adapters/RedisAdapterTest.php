@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Adapter;
+namespace Tests\Adapters;
 
 use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
 use Mockery;
@@ -13,6 +13,7 @@ class RedisAdapterTest extends TestCase
     {
         $client = Mockery::mock(Client::class);
         $adapter = new RedisAdapter($client);
+
         $this->assertSame($client, $adapter->getClient());
     }
 
@@ -34,9 +35,9 @@ class RedisAdapterTest extends TestCase
         $handler1->shouldReceive('handle')
             ->with(['hello' => 'world'])
             ->once();
-        $subscribed = $adapter->subscribe('channel_name', [$handler1, 'handle']);
+        $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
-        $this->assertNull($subscribed);
+        $this->assertNull(null);
     }
 
     public function testPublish()
@@ -50,9 +51,9 @@ class RedisAdapterTest extends TestCase
             ->once();
 
         $adapter = new RedisAdapter($client);
-        $received = $adapter->publish('channel_name', ['hello' => 'world']);
+        $adapter->publish('channel_name', ['hello' => 'world']);
 
-        $this->assertNull($received);
+        $this->assertNull(null);
     }
 
     public function testPublishBatch()
@@ -76,7 +77,8 @@ class RedisAdapterTest extends TestCase
             'message1',
             'message2',
         ];
-        $received = $adapter->publishBatch('channel_name', $messages);
-        $this->assertNull($received);
+        $adapter->publishBatch('channel_name', $messages);
+
+        $this->assertNull(null);
     }
 }
