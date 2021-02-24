@@ -5,7 +5,7 @@ namespace LeroyMerlin\LaravelPubSub;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
-use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
@@ -40,7 +40,7 @@ class PubSubConnectionFactory
     {
         switch ($driver) {
             case '/dev/null':
-                return new DevNullPubSubAdapter();
+                return new DevNullAdapter();
             case 'local':
                 return new LocalPubSubAdapter();
             case 'redis':

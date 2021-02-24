@@ -10,7 +10,7 @@ use Mockery;
 use Predis\Client as RedisClient;
 use Psr\Cache\CacheItemPoolInterface;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
-use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
@@ -27,7 +27,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('/dev/null');
-        $this->assertInstanceOf(DevNullPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(DevNullAdapter::class, $adapter);
     }
 
     public function testMakeLocalAdapter()

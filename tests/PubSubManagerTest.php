@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Mockery;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
 use LeroyMerlin\LaravelPubSub\PubSubManager;
-use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 
 class PubSubManagerTest extends TestCase
@@ -142,7 +142,7 @@ class PubSubManagerTest extends TestCase
             ->once()
             ->andReturn($config);
 
-        $adapter = Mockery::mock(DevNullPubSubAdapter::class);
+        $adapter = Mockery::mock(DevNullAdapter::class);
 
         $factory = Mockery::mock(PubSubConnectionFactory::class, [$app]);
         $factory->shouldReceive('make')
