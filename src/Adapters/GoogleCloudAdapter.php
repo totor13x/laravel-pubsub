@@ -4,10 +4,14 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use Google\Cloud\PubSub\Message;
 use Google\Cloud\PubSub\PubSubClient;
-use Superbalist\PubSub\PubSubAdapterInterface;
-use Superbalist\PubSub\Utils;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
+use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
-class GoogleCloudAdapter implements PubSubAdapterInterface
+/**
+ * Google Cloud adapter
+ * @source https://github.com/Superbalist/php-pubsub-google-cloud Superbalist PHP Google Cloud PubSub Adapter
+ */
+class GoogleCloudAdapter implements AdapterInterface
 {
     /**
      * @var PubSubClient
@@ -254,7 +258,7 @@ class GoogleCloudAdapter implements PubSubAdapterInterface
             }
             foreach ($messages as $message) {
                 /** @var Message $message */
-                $payload = Utils::unserializeMessagePayload($message->data());
+                $payload = Serialization::unserializeMessagePayload($message->data());
 
                 if ($payload === 'unsubscribe') {
                     $isSubscriptionLoopActive = false;
@@ -276,7 +280,7 @@ class GoogleCloudAdapter implements PubSubAdapterInterface
     public function publish($channel, $message)
     {
         $topic = $this->getTopicForChannel($channel);
-        $payload = Utils::serializeMessage($message);
+        $payload = Serialization::serializeMessage($message);
 
         if ($this->backgroundBatching) {
             $topic->batchPublisher()->publish(['data' => $payload]);
@@ -295,7 +299,7 @@ class GoogleCloudAdapter implements PubSubAdapterInterface
     {
         $topic = $this->getTopicForChannel($channel);
         $messages = array_map(function ($message) {
-            return ['data' => Utils::serializeMessage($message)];
+            return ['data' => Serialization::serializeMessage($message)];
         }, $messages);
 
         if ($this->backgroundBatching) {

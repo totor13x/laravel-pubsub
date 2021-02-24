@@ -6,17 +6,17 @@ use Google\Cloud\PubSub\PubSubClient as GoogleCloudPubSubClient;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Container\Container;
 use InvalidArgumentException;
+use LeroyMerlin\LaravelPubSub\Adapters\KafkaAdapter;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Mockery;
 use Predis\Client as RedisClient;
 use Psr\Cache\CacheItemPoolInterface;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
-use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
-use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\LocalAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
-use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
-use Superbalist\PubSub\PubSubAdapterInterface;
 
 class PubSubConnectionFactoryTest extends TestCase
 {
@@ -27,7 +27,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('/dev/null');
-        $this->assertInstanceOf(DevNullPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(DevNullAdapter::class, $adapter);
     }
 
     public function testMakeLocalAdapter()
@@ -37,7 +37,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('local');
-        $this->assertInstanceOf(LocalPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(LocalAdapter::class, $adapter);
     }
 
     public function testMakeRedisAdapter()
@@ -68,10 +68,6 @@ class PubSubConnectionFactoryTest extends TestCase
 
     public function testMakeKafkaAdapter()
     {
-        if (!class_exists('\Superbalist\PubSub\Kafka\KafkaPubSubAdapter')) {
-            $this->markTestSkipped('KafkaPubSubAdapter is not installed');
-        }
-
         $config = [
             'consumer_group_id' => 'php-pubsub',
             'brokers' => 'localhost',
@@ -144,7 +140,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('kafka', $config);
-        $this->assertInstanceOf(KafkaPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(KafkaAdapter::class, $adapter);
     }
 
     public function testMakeGoogleCloudAdapter()
@@ -272,7 +268,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $adapter = $factory->make('http', $config); /* @var HTTPAdapter $adapter */
         $this->assertInstanceOf(HTTPAdapter::class, $adapter);
         $this->assertEquals('http://127.0.0.1', $adapter->getUri());
-        $this->assertInstanceOf(PubSubAdapterInterface::class, $adapter->getAdapter());
+        $this->assertInstanceOf(AdapterInterface::class, $adapter->getAdapter());
     }
 
     public function testMakeInvalidAdapterThrowsInvalidArgumentException()

@@ -5,8 +5,8 @@ namespace LeroyMerlin\LaravelPubSub;
 use Google\Cloud\PubSub\PubSubClient as GoogleCloudPubSubClient;
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Predis\Client as RedisClient;
-use Superbalist\PubSub\PubSubAdapterInterface;
 
 class PubSubServiceProvider extends ServiceProvider
 {
@@ -35,9 +35,9 @@ class PubSubServiceProvider extends ServiceProvider
             return new PubSubManager($app, $app['pubsub.factory']);
         });
 
-        $this->app->bind('pubsub.connection', PubSubAdapterInterface::class);
+        $this->app->bind('pubsub.connection', AdapterInterface::class);
 
-        $this->app->bind(PubSubAdapterInterface::class, function ($app) {
+        $this->app->bind(AdapterInterface::class, function ($app) {
             $manager = $app['pubsub']; /* @var PubSubManager $manager */
             return $manager->connection();
         });

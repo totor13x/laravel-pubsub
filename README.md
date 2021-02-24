@@ -106,7 +106,7 @@ $pubsub->publish('channel_name', 'message');
 // get the default connection
 $pubsub = app('pubsub.connection');
 // or
-$pubsub = app(\Superbalist\PubSub\PubSubAdapterInterface::class);
+$pubsub = app(\LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface::class);
 
 // get a specific connection
 $pubsub = app('pubsub')->connection('redis');
@@ -151,7 +151,7 @@ This generator command will create the file `app/Console/Commands/MyExampleSubsc
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
 class MyExampleSubscriber extends Command
 {
@@ -170,16 +170,16 @@ class MyExampleSubscriber extends Command
     protected $description = 'PubSub subscriber for ________';
 
     /**
-     * @var PubSubAdapterInterface
+     * @var AdapterInterface
      */
     protected $pubsub;
 
     /**
      * Create a new command instance.
      *
-     * @param PubSubAdapterInterface $pubsub
+     * @param AdapterInterface $pubsub
      */
-    public function __construct(PubSubAdapterInterface $pubsub)
+    public function __construct(AdapterInterface $pubsub)
     {
         parent::__construct();
 
@@ -215,7 +215,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use Superbalist\PubSub\AdapterInterface;
 
 class MyExampleKafkaSubscriber extends Command
 {
@@ -234,7 +234,7 @@ class MyExampleKafkaSubscriber extends Command
     protected $description = 'PubSub subscriber for ________';
 
     /**
-     * @var PubSubAdapterInterface
+     * @var AdapterInterface
      */
     protected $pubsub;
 
@@ -273,7 +273,7 @@ To include your custom driver, you can call the `extend()` function.
 ```php
 $manager = app('pubsub');
 $manager->extend('custom_connection_name', function ($config) {
-    // your callable must return an instance of the PubSubAdapterInterface
+    // your callable must return an instance of the AdapterInterface
     return new MyCustomPubSubDriver($config);
 });
 

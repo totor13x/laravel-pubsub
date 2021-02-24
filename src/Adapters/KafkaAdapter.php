@@ -2,10 +2,14 @@
 
 namespace LeroyMerlin\LaravelPubSub\Adapters;
 
-use Superbalist\PubSub\PubSubAdapterInterface;
-use Superbalist\PubSub\Utils;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
+use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
-class KafkaAdapter implements PubSubAdapterInterface
+/**
+ * Kafka adapter
+ * @source https://github.com/Superbalist/php-pubsub-kafka Superbalist PHP Kafka PubSub Adapter
+ */
+class KafkaAdapter implements AdapterInterface
 {
     /**
      * @var \RdKafka\Producer
@@ -70,7 +74,7 @@ class KafkaAdapter implements PubSubAdapterInterface
 
             switch ($message->err) {
                 case RD_KAFKA_RESP_ERR_NO_ERROR:
-                    $payload = Utils::unserializeMessagePayload($message->payload);
+                    $payload = Serialization::unserializeMessagePayload($message->payload);
 
                     if ($payload === 'unsubscribe') {
                         $isSubscriptionLoopActive = false;
@@ -99,7 +103,7 @@ class KafkaAdapter implements PubSubAdapterInterface
     public function publish($channel, $message)
     {
         $topic = $this->producer->newTopic($channel);
-        $topic->produce(RD_KAFKA_PARTITION_UA, 0, Utils::serializeMessage($message));
+        $topic->produce(RD_KAFKA_PARTITION_UA, 0, Serialization::serializeMessage($message));
     }
 
     /**

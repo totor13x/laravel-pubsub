@@ -5,11 +5,11 @@ namespace Tests;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Foundation\Application;
 use InvalidArgumentException;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Mockery;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
 use LeroyMerlin\LaravelPubSub\PubSubManager;
-use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
 
 class PubSubManagerTest extends TestCase
 {
@@ -34,7 +34,7 @@ class PubSubManagerTest extends TestCase
                 [],
             ])
             ->once()
-            ->andReturn(PubSubAdapterInterface::class);
+            ->andReturn(AdapterInterface::class);
 
         $manager = new PubSubManager($app, $factory);
 
@@ -117,7 +117,7 @@ class PubSubManagerTest extends TestCase
                 ],
             ])
             ->once()
-            ->andReturn(PubSubAdapterInterface::class);
+            ->andReturn(AdapterInterface::class);
 
         $manager = new PubSubManager($app, $factory);
 
@@ -142,7 +142,7 @@ class PubSubManagerTest extends TestCase
             ->once()
             ->andReturn($config);
 
-        $adapter = Mockery::mock(DevNullPubSubAdapter::class);
+        $adapter = Mockery::mock(DevNullAdapter::class);
 
         $factory = Mockery::mock(PubSubConnectionFactory::class, [$app]);
         $factory->shouldReceive('make')
@@ -226,7 +226,7 @@ class PubSubManagerTest extends TestCase
                 ],
             ])
             ->once()
-            ->andReturn(PubSubAdapterInterface::class);
+            ->andReturn(AdapterInterface::class);
 
         $manager = new PubSubManager($app, $factory);
 

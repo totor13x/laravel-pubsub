@@ -5,7 +5,7 @@ namespace LeroyMerlin\LaravelPubSub;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
-use Superbalist\PubSub\PubSubAdapterInterface;
+use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
 class PubSubManager
 {
@@ -44,7 +44,7 @@ class PubSubManager
      *
      * @param string $name
      *
-     * @return PubSubAdapterInterface
+     * @return AdapterInterface
      */
     public function connection($name = null)
     {
@@ -64,7 +64,7 @@ class PubSubManager
      *
      * @param string $name
      *
-     * @return PubSubAdapterInterface
+     * @return AdapterInterface
      */
     protected function makeConnection($name)
     {
