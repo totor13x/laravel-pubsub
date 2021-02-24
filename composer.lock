@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36e7f209126ba2f038c71c53346f6650",
+    "content-hash": "9ff8eb6b4ba3152088d8293a6416ff87",
     "packages": [
         {
             "name": "brick/math",
@@ -755,16 +755,16 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.15.1",
+            "version": "v3.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "807ccc0f1973823b405837c940919924b3a55e18"
+                "reference": "9b61d9e5f48cc28d12f0b00dc2da426da4c5517a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/807ccc0f1973823b405837c940919924b3a55e18",
-                "reference": "807ccc0f1973823b405837c940919924b3a55e18",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/9b61d9e5f48cc28d12f0b00dc2da426da4c5517a",
+                "reference": "9b61d9e5f48cc28d12f0b00dc2da426da4c5517a",
                 "shasum": ""
             },
             "require": {
@@ -794,9 +794,9 @@
             ],
             "support": {
                 "issues": "https://github.com/protocolbuffers/protobuf-php/issues",
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.15.1"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.15.2"
             },
-            "time": "2021-02-20T01:50:42+00:00"
+            "time": "2021-02-23T23:35:18+00:00"
         },
         {
             "name": "grpc/grpc",
@@ -3465,16 +3465,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93"
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/20cab678faed06fac225193be281ea0fddb43b93",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1339f64479af1bee0e82a0413813fe5345a54ea",
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea",
                 "shasum": ""
             },
             "require": {
@@ -3531,9 +3531,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/master"
+                "source": "https://github.com/mockery/mockery/tree/1.4.3"
             },
-            "time": "2020-08-11T18:10:13+00:00"
+            "time": "2021-02-24T09:51:49+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5371,58 +5371,6 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
-            "name": "superbalist/php-pubsub-kafka",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Superbalist/php-pubsub-kafka.git",
-                "reference": "75c7a166ff71a6089255eeb38499dcc69cd175e7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Superbalist/php-pubsub-kafka/zipball/75c7a166ff71a6089255eeb38499dcc69cd175e7",
-                "reference": "75c7a166ff71a6089255eeb38499dcc69cd175e7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-rdkafka": "*",
-                "php": ">=5.6.0",
-                "superbalist/php-pubsub": "^2.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "^5.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Superbalist\\PubSub\\Kafka\\": "src/",
-                    "Tests\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Superbalist.com a division of Takealot Online (Pty) Ltd",
-                    "email": "info@superbalist.com"
-                }
-            ],
-            "description": "A Kafka adapter for the php-pubsub package",
-            "support": {
-                "issues": "https://github.com/Superbalist/php-pubsub-kafka/issues",
-                "source": "https://github.com/Superbalist/php-pubsub-kafka/tree/master"
-            },
-            "time": "2017-05-18T12:48:23+00:00"
-        },
-        {
             "name": "theseer/tokenizer",
             "version": "1.2.0",
             "source": {
@@ -5534,6 +5482,8 @@
     "platform": {
         "php": ">=7.4.0"
     },
-    "platform-dev": [],
+    "platform-dev": {
+        "ext-json": "*"
+    },
     "plugin-api-version": "2.0.0"
 }
