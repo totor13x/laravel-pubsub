@@ -1,14 +1,14 @@
 <?php
 
-namespace Superbalist\LaravelPubSub;
+namespace LeroyMerlin\LaravelPubSub;
 
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
-use Superbalist\PubSub\GoogleCloud\GoogleCloudPubSubAdapter;
-use Superbalist\PubSub\HTTP\HTTPPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 use Superbalist\PubSub\Redis\RedisPubSubAdapter;
@@ -126,7 +126,7 @@ class PubSubConnectionFactory
      *
      * @param array $config
      *
-     * @return GoogleCloudPubSubAdapter
+     * @return GoogleCloudAdapter
      */
     protected function makeGoogleCloudAdapter(array $config)
     {
@@ -149,7 +149,7 @@ class PubSubConnectionFactory
         if ($backgroundDaemon) {
             putenv('IS_BATCH_DAEMON_RUNNING=true');
         }
-        return new GoogleCloudPubSubAdapter(
+        return new GoogleCloudAdapter(
             $client,
             $clientIdentifier,
             $autoCreateTopics,
@@ -163,7 +163,7 @@ class PubSubConnectionFactory
      *
      * @param array $config
      *
-     * @return HTTPPubSubAdapter
+     * @return HTTPAdapter
      */
     protected function makeHTTPAdapter(array $config)
     {
@@ -172,6 +172,6 @@ class PubSubConnectionFactory
             $config['subscribe_connection_config']['driver'],
             $config['subscribe_connection_config']
         );
-        return new HTTPPubSubAdapter($client, $config['uri'], $adapter);
+        return new HTTPAdapter($client, $config['uri'], $adapter);
     }
 }

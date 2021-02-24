@@ -13,21 +13,22 @@
   },
   "require": {
     "php": ">=7.4.0",
+    "google/cloud": "^0.149.0",
+    "guzzlehttp/guzzle": "^7.2",
+    "illuminate/console": "^8.0",
     "illuminate/support": "^8.0",
     "superbalist/php-pubsub": "^1.0|^2.0",
-    "superbalist/php-pubsub-redis": "^1.0|^2.0",
-    "superbalist/php-pubsub-google-cloud": "^5.0",
-    "illuminate/console": "^8.0",
-    "superbalist/php-pubsub-http": "^1.0"
+    "superbalist/php-pubsub-redis": "^1.0|^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0",
     "mockery/mockery": "^1.4.2",
-    "superbalist/php-pubsub-kafka": "^2.0"
+    "superbalist/php-pubsub-kafka": "^2.0",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
-      "Superbalist\\LaravelPubSub\\": "src/"
+      "LeroyMerlin\\LaravelPubSub\\": "src/"
     }
   },
   "autoload-dev": {
