@@ -6,7 +6,7 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
-use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\LocalAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
@@ -42,7 +42,7 @@ class PubSubConnectionFactory
             case '/dev/null':
                 return new DevNullAdapter();
             case 'local':
-                return new LocalPubSubAdapter();
+                return new LocalAdapter();
             case 'redis':
                 return $this->makeRedisAdapter($config);
             case 'kafka':

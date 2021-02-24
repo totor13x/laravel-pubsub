@@ -11,7 +11,7 @@ use Predis\Client as RedisClient;
 use Psr\Cache\CacheItemPoolInterface;
 use LeroyMerlin\LaravelPubSub\PubSubConnectionFactory;
 use LeroyMerlin\LaravelPubSub\Adapters\DevNullAdapter;
-use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
+use LeroyMerlin\LaravelPubSub\Adapters\LocalAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\GoogleCloudAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\HTTPAdapter;
 use LeroyMerlin\LaravelPubSub\Adapters\RedisAdapter;
@@ -37,7 +37,7 @@ class PubSubConnectionFactoryTest extends TestCase
         $factory = new PubSubConnectionFactory($container);
 
         $adapter = $factory->make('local');
-        $this->assertInstanceOf(LocalPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(LocalAdapter::class, $adapter);
     }
 
     public function testMakeRedisAdapter()
