@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Adapters;
 
 use Google\Cloud\PubSub\BatchPublisher;
 use Google\Cloud\PubSub\Message;
