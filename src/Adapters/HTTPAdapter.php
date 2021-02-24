@@ -7,7 +7,7 @@ use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Superbalist\PubSub\PubSubAdapterInterface;
 
-class HTTPPubSubAdapter implements PubSubAdapterInterface
+class HTTPAdapter implements PubSubAdapterInterface
 {
     /**
      * @var Client

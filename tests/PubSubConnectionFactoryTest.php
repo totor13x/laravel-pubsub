@@ -12,8 +12,8 @@ use Psr\Cache\CacheItemPoolInterface;
 use LaravelPubSub\PubSubConnectionFactory;
 use Superbalist\PubSub\Adapters\DevNullPubSubAdapter;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
-use LaravelPubSub\Adapters\GoogleCloudPubSubAdapter;
-use LaravelPubSub\Adapters\HTTPPubSubAdapter;
+use LaravelPubSub\Adapters\GoogleCloudAdapter;
+use LaravelPubSub\Adapters\HTTPAdapter;
 use Superbalist\PubSub\Kafka\KafkaPubSubAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 use Superbalist\PubSub\Redis\RedisPubSubAdapter;
@@ -173,10 +173,10 @@ class PubSubConnectionFactoryTest extends TestCase
             'background_daemon' => false,
         ];
         $adapter = $factory->make('gcloud', $config);
-        $this->assertInstanceOf(GoogleCloudPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(GoogleCloudAdapter::class, $adapter);
 
-        $adapter = $factory->make('gcloud', $config); /* @var GoogleCloudPubSubAdapter $adapter */
-        $this->assertInstanceOf(GoogleCloudPubSubAdapter::class, $adapter);
+        $adapter = $factory->make('gcloud', $config); /* @var GoogleCloudAdapter $adapter */
+        $this->assertInstanceOf(GoogleCloudAdapter::class, $adapter);
         $this->assertEquals('blah', $adapter->getClientIdentifier());
         $this->assertFalse($adapter->areTopicsAutoCreated());
         $this->assertTrue($adapter->areSubscriptionsAutoCreated());
@@ -210,10 +210,10 @@ class PubSubConnectionFactoryTest extends TestCase
             'background_daemon' => true,
         ];
         $adapter = $factory->make('gcloud', $config);
-        $this->assertInstanceOf(GoogleCloudPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(GoogleCloudAdapter::class, $adapter);
 
-        $adapter = $factory->make('gcloud', $config); /* @var GoogleCloudPubSubAdapter $adapter */
-        $this->assertInstanceOf(GoogleCloudPubSubAdapter::class, $adapter);
+        $adapter = $factory->make('gcloud', $config); /* @var GoogleCloudAdapter $adapter */
+        $this->assertInstanceOf(GoogleCloudAdapter::class, $adapter);
         $this->assertEquals('blah', $adapter->getClientIdentifier());
         $this->assertFalse($adapter->areTopicsAutoCreated());
         $this->assertTrue($adapter->areSubscriptionsAutoCreated());
@@ -251,7 +251,7 @@ class PubSubConnectionFactoryTest extends TestCase
         ];
 
         $adapter = $factory->make('gcloud', $config);
-        $this->assertInstanceOf(GoogleCloudPubSubAdapter::class, $adapter);
+        $this->assertInstanceOf(GoogleCloudAdapter::class, $adapter);
     }
 
     public function testMakeHTTPAdapter()
@@ -269,8 +269,8 @@ class PubSubConnectionFactoryTest extends TestCase
                 'driver' => '/dev/null',
             ],
         ];
-        $adapter = $factory->make('http', $config); /* @var HTTPPubSubAdapter $adapter */
-        $this->assertInstanceOf(HTTPPubSubAdapter::class, $adapter);
+        $adapter = $factory->make('http', $config); /* @var HTTPAdapter $adapter */
+        $this->assertInstanceOf(HTTPAdapter::class, $adapter);
         $this->assertEquals('http://127.0.0.1', $adapter->getUri());
         $this->assertInstanceOf(PubSubAdapterInterface::class, $adapter->getAdapter());
     }

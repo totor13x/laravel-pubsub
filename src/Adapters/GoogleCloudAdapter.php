@@ -7,7 +7,7 @@ use Google\Cloud\PubSub\PubSubClient;
 use Superbalist\PubSub\PubSubAdapterInterface;
 use Superbalist\PubSub\Utils;
 
-class GoogleCloudPubSubAdapter implements PubSubAdapterInterface
+class GoogleCloudAdapter implements PubSubAdapterInterface
 {
     /**
      * @var PubSubClient

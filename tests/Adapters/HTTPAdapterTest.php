@@ -5,16 +5,16 @@ namespace Tests\Adapters;
 use GuzzleHttp\Client;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use LaravelPubSub\Adapters\HTTPPubSubAdapter;
+use LaravelPubSub\Adapters\HTTPAdapter;
 use Superbalist\PubSub\PubSubAdapterInterface;
 
-class HTTPPubSubAdapterTest extends TestCase
+class HTTPAdapterTest extends TestCase
 {
     public function testGetClient()
     {
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
-        $adapter = new HTTPPubSubAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
+        $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
         $this->assertSame($client, $adapter->getClient());
     }
 
@@ -22,7 +22,7 @@ class HTTPPubSubAdapterTest extends TestCase
     {
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
-        $adapter = new HTTPPubSubAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
+        $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
         $this->assertEquals('http://127.0.0.1', $adapter->getUri());
         $adapter->setUri('http://bleh');
         $this->assertEquals('http://bleh', $adapter->getUri());
@@ -32,7 +32,7 @@ class HTTPPubSubAdapterTest extends TestCase
     {
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
-        $adapter = new HTTPPubSubAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
+        $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
         $this->assertSame($subscribeAdapter, $adapter->getAdapter());
     }
 
@@ -40,7 +40,7 @@ class HTTPPubSubAdapterTest extends TestCase
     {
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
-        $adapter = new HTTPPubSubAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
+        $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
         $this->assertEquals('superbalist/php-pubsub-http', $adapter->getUserAgent());
         $adapter->setUserAgent('meh');
         $this->assertEquals('meh', $adapter->getUserAgent());
@@ -50,7 +50,7 @@ class HTTPPubSubAdapterTest extends TestCase
     {
         $client = Mockery::mock(Client::class);
         $subscribeAdapter = Mockery::mock(PubSubAdapterInterface::class);
-        $adapter = new HTTPPubSubAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
+        $adapter = new HTTPAdapter($client, 'http://127.0.0.1', $subscribeAdapter);
         $adapter->setUserAgent('My UserAgent String');
         $headers = $adapter->getGlobalHeaders();
         $this->assertArrayHasKey('User-Agent', $headers);
