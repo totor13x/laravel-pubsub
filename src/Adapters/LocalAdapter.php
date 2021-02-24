@@ -4,6 +4,10 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
+/**
+ * Local Adapter
+ * @source https://github.com/Superbalist/php-pubsub/blob/master/src/Adapters/LocalPubSubAdapter.php
+ */
 class LocalAdapter implements AdapterInterface
 {
     /**

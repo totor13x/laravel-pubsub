@@ -7,6 +7,10 @@ use Google\Cloud\PubSub\PubSubClient;
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
+/**
+ * Google Cloud adapter
+ * @source https://github.com/Superbalist/php-pubsub-google-cloud Superbalist PHP Google Cloud PubSub Adapter
+ */
 class GoogleCloudAdapter implements AdapterInterface
 {
     /**

@@ -4,6 +4,10 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 
+/**
+ * DevNull Adapter
+ * @source https://github.com/Superbalist/php-pubsub/blob/master/src/Adapters/DevNullPubSubAdapter.php
+ */
 class DevNullAdapter implements AdapterInterface
 {
     /**

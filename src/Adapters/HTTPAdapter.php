@@ -7,6 +7,10 @@ use GuzzleHttp\Psr7\Request;
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * HTTP adapter
+ * @source https://github.com/Superbalist/php-pubsub-http Superbalist PHP HTTP PubSub Adapter
+ */
 class HTTPAdapter implements AdapterInterface
 {
     /**

@@ -5,6 +5,10 @@ namespace LeroyMerlin\LaravelPubSub\Adapters;
 use LeroyMerlin\LaravelPubSub\Contracts\AdapterInterface;
 use LeroyMerlin\LaravelPubSub\Utils\Serialization;
 
+/**
+ * Kafka adapter
+ * @source https://github.com/Superbalist/php-pubsub-kafka Superbalist PHP Kafka PubSub Adapter
+ */
 class KafkaAdapter implements AdapterInterface
 {
     /**
