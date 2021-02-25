@@ -9,7 +9,7 @@ use Predis\Client;
 
 class RedisAdapterTest extends TestCase
 {
-    public function testGetClient()
+    public function testGetClient(): void
     {
         $client = Mockery::mock(Client::class);
         $adapter = new RedisAdapter($client);
@@ -17,7 +17,10 @@ class RedisAdapterTest extends TestCase
         $this->assertSame($client, $adapter->getClient());
     }
 
-    public function testSubscribe()
+    /**
+     * Test with no required response for code coverage and prevent break purposes
+     */
+    public function testSubscribe(): void
     {
         $loop = Mockery::mock('\Tests\Mocks\MockRedisPubSubLoop[subscribe]');
         $loop->shouldReceive('subscribe')
@@ -40,7 +43,10 @@ class RedisAdapterTest extends TestCase
         $this->assertNull(null);
     }
 
-    public function testPublish()
+    /**
+     * Test with no required response for code coverage and prevent break purposes
+     */
+    public function testPublish(): void
     {
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('publish')
@@ -56,7 +62,10 @@ class RedisAdapterTest extends TestCase
         $this->assertNull(null);
     }
 
-    public function testPublishBatch()
+    /**
+     * Test with no required response for code coverage and prevent break purposes
+     */
+    public function testPublishBatch(): void
     {
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('publish')
