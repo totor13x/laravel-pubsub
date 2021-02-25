@@ -64,6 +64,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -110,6 +113,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -156,6 +162,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -205,6 +214,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -239,6 +251,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->subscribe('channel_name', [$handler1, 'handle']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -265,6 +280,9 @@ class KafkaAdapterTest extends TestCase
 
         $adapter->publish('channel_name', ['hello' => 'world']);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 
@@ -302,6 +320,9 @@ class KafkaAdapterTest extends TestCase
         ];
         $adapter->publishBatch('channel_name', $messages);
 
+        /**
+         * Test with no required response for code coverage and prevent break purposes
+         */
         $this->assertNull(null);
     }
 }
