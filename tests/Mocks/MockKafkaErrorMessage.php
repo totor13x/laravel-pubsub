@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Adapters\Mocks;
+namespace Tests\Mocks;
 
 class MockKafkaErrorMessage
 {

@@ -5,7 +5,7 @@ namespace Tests\Adapters;
 use LeroyMerlin\LaravelPubSub\Adapters\KafkaAdapter;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use Tests\Adapters\Mocks\MockKafkaErrorMessage;
+use Tests\Mocks\MockKafkaErrorMessage;
 
 if (!extension_loaded('rdkafka')) {
     define('RD_KAFKA_PARTITION_UA', 0);
