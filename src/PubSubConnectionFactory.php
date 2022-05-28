@@ -133,6 +133,7 @@ class PubSubConnectionFactory
         $clientConfig = [
             'projectId' => $config['project_id'],
             'keyFilePath' => $config['key_file'],
+            'transport => $config['transport']
         ];
 
         if (isset($config['auth_cache'])) {
